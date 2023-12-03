@@ -153,7 +153,59 @@ Java 9对Stream API进行了一些增强，添加了一些新的方法，使得�
 ##  全新的 Java 长期支持版本提供数千个更新，进一步优化语言和平台，帮助开发人员提高工作效率
 ##  Oracle JDK 17 将为客户提供安全、性能和错误修复更新，至少到 2029 年 9 月
 
-对于Java 18到Java 21的版本，我没有找到相关的更新信息。如果有任何新的信息，我会及时更新。
+以下是从Java 17到Java 21的一些主要变化：
+
+**Java 17**¹²：
+- 标准化了HTTP Client API，该API在JDK 9中首次以孵化API的形式引入，并在JDK 10中进行了更新¹。
+  HTTP Client API示例¹：
+```java
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create("http://example.com/"))
+      .build();
+client.sendAsync(request, BodyHandlers.ofString())
+      .thenApply(HttpResponse::body)
+      .thenAccept(System.out::println);
+```
+**Java 18**⁵⁶⁷：
+- 引入了向量API，预览了用于switch表达式的模式匹配，采用了UTF-8作为默认字符集，包含了一个简单的web服务器等⁷。
+向量API示例⁵：
+```java
+var a = IntVector.fromArray(SPECIES_128, arrayA, 0);
+var b = IntVector.fromArray(SPECIES_128, arrayB, 0);
+var c = a.mul(b).add(a).intoArray(result, 0);
+```
+**Java 19**⁹[^10^]¹¹：
+- 从OpenJDK项目Amber中引入了语言改进（记录模式和用于Switch的模式匹配）；
+模式匹配示例⁹：
+```java
+Object obj = "Hello, World!";
+if (obj instanceof String s) {
+    System.out.println(s.toLowerCase());
+}
+```
+- 从OpenJDK项目Panama中引入了库增强功能，以便与非Java代码进行互操作（Foreign Function and Memory API）并利用向量指令（Vector API）；
+- 预览了Project Loom的首个版本（Virtual Threads和Structured Concurrency），这将大大减少编写和维护高吞吐量并发应用程序所需的工作量[^10^]。
+
+**Java 20**¹³¹⁴¹⁵：
+- 引入了虚拟线程，一种代际Z垃圾收集器，以及一种关键的封装机制API¹⁵。
+虚拟线程示例¹³：
+```java
+Thread.startVirtualThread(() -> System.out.println("Hello, World!"));
+```
+**Java 21**¹⁶¹⁷¹⁸¹⁹：
+- 引入了记录模式，以解构记录值¹⁶；
+  记录模式示例¹⁶：
+```java
+record Point(int x, int y) { }
+var p = new Point(3, 4);
+if (p instanceof Point(int x, int y)) {
+    System.out.println("x = " + x + ", y = " + y);
+}
+```
+- 优化了虚拟线程¹⁶；
+- 引入了代际ZGC¹⁶；
+- 准备禁止动态加载代理¹⁶。
 
 > (1) Java 8 新特性 | 菜鸟教程. https://bing.com/search?q=Java+8+%e4%b8%bb%e8%a6%81%e6%9b%b4%e6%96%b0%e5%86%85%e5%ae%b9.
 >
@@ -212,3 +264,45 @@ Java 9对Stream API进行了一些增强，添加了一些新的方法，使得�
 > (28) undefined. https://docs.oracle.com/en/java/javase/11/migrate/index.html.
 > 
 > (29) undefined. https://openjfx.io/.
+> 
+> (31) New Features in Java 17 | Baeldung. https://www.baeldung.com/java-17-new-features.
+> 
+> (32) Java 17 New Features (with Examples) - HowToDoInJava. https://howtodoinjava.com/java/new-features/.
+> 
+> (33) Every change between JDK 11 and the Java 17 LTS release. https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/all-changes-in-Java-17-since-JDK-11-LTS-release.
+> 
+> (34) Java 18 Features (with Examples) - HappyCoders.eu. https://www.happycoders.eu/java/java-18-features/.
+> 
+> (35) JDK 18 Release Notes, Important Changes, and Information - Oracle. https://www.oracle.com/java/technologies/javase/18-relnote-issues.html.
+> 
+> (36) New Features in Java 18 | Developer.com. https://www.developer.com/java/java-18-features/.
+> 
+> (37) Java 19 Features (with Examples) - HappyCoders.eu. https://www.happycoders.eu/java/java-19-features/.
+> 
+> (38) JDK 19 Release Notes, Important Changes, and Information - Oracle. https://www.oracle.com/java/technologies/javase/19-relnote-issues.html.
+> 
+> (39) Latest Java 19 : JDK 19 Arrived- What's new features in Java 19 - TechGeekNext. https://www.techgeeknext.com/java/java19-features.
+> 
+> (40) JDK 19: The new features in Java 19 | InfoWorld. https://www.infoworld.com/article/3653331/jdk-19-the-new-features-in-java-19.html.
+> 
+> (41) Java 20 Features (with Examples) - HappyCoders.eu. https://www.happycoders.eu/java/java-20-features/.
+> 
+> (42) New Features in Java 20 | Baeldung. https://www.baeldung.com/java-20-new-features.
+> 
+> (43) JDK 20: The new features in Java 20 | InfoWorld. https://www.infoworld.com/article/3676699/jdk-20-the-new-features-in-java-20.html.
+> 
+> (44) Java 21 Features (LTS): Practical Examples and Insights - HowToDoInJava. https://howtodoinjava.com/java/java-21-new-features/.
+> 
+> (45) Java 21 Features (with Examples) - HappyCoders.eu. https://www.happycoders.eu/java/java-21-features/.
+> 
+> (46) JDK 17 - New Features in Java 17 - GeeksforGeeks. https://www.geeksforgeeks.org/jdk-17-new-features-in-java-17/.
+> 
+> (47) What is new in Java 17 - Mkyong.com. https://mkyong.com/java/what-is-new-in-java-17/.
+> 
+> (48) JDK 18: The new features in Java 18 | InfoWorld. https://www.infoworld.com/article/3630510/jdk-18-the-new-features-in-java-18.html.
+> 
+> (49) What is new in Java 19 - Mkyong.com. https://mkyong.com/java/what-is-new-in-java-19/.
+> 
+> (50) Java 21: Unleashing Exciting Updates for All Developers! - Medium. https://medium.com/@Harshit_Raj_14/java-21-unleashing-exciting-updates-for-all-developers-7913dc106941.
+> 
+> (51) What's new for developers in JDK 21 | Red Hat Developer. https://developers.redhat.com/articles/2023/09/21/whats-new-developers-jdk-21.

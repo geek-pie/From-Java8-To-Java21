@@ -1,8 +1,8 @@
 
-# **Java 8**³：
+# **Java 8**：
 ## Stream API
 - 实际上，在我们的使用过程中，Stream的使用往往会包含以下多个新的feature，因此先行提及，但后续的介绍让我们能够清晰地了解，在我们进行stream的复杂操作时，分别涉及到的具体特性是什么
-- Stream API是Java函数式编程的核心。Stream API可以对集合进行非常复杂的查找、过滤和映射数据等操作。使用Stream API可以极大提高程序效率和程序可读性，同时它也是处理并行操作的好工具²。
+- Stream API是Java函数式编程的核心。Stream API可以对集合进行非常复杂的查找、过滤和映射数据等操作。使用Stream API可以极大提高程序效率和程序可读性，同时它也是处理并行操作的好工具。
   1. **无存储**：Stream不是一种数据结构，它不会保存数据，它只是对数据源进行计算。
   2. **函数式**：对Stream的任何修改都不会修改背后的数据源，比如对Stream执行过滤操作并不会删除被过滤的元素，而是产生一个新的Stream，它包含原Stream中符合条件的元素。
   3. **惰性执行**：Stream API很多操作是延迟执行的，这意味着它们会等到需要结果的时候才执行。
@@ -10,7 +10,7 @@
 Stream API支持两种类型的操作：
 - **中间操作**：返回一个新的Stream，如`filter`、`map`、`sorted`等。
 - **结束操作**：返回一个最终结果，如`reduce`、`collect`、`forEach`等。
-  例如，下面的代码片段使用Stream API从一组字符串中筛选出以"abc"开头的字符串，并打印出来³：
+  例如，下面的代码片段使用Stream API从一组字符串中筛选出以"abc"开头的字符串，并打印出来：
   ```java
       List<String> list = Arrays.asList("abc1", "abc2", "abc3");
       list.stream()
@@ -43,33 +43,33 @@ Lambda表达式，也称为闭包，是Java 8的重要新特性。Lambda允许�
 - 构造方法引用：`ClassName::new`
 - 数组构造方法引用：`TypeName[]::new`
 ##  Date Time API
-- Java 8引入了一个全新的日期/时间API，位于java.time包下。这个API包含了一系列重要的类，用于处理日期和时间¹²⁴。以下是一些主要的类：
-  1. **Local**：简化了日期时间的处理，没有时区的问题³⁴。
-     - `LocalDate`：用于表示“本地日期”，无“时间”。LocalDate不承载时区信息¹。
-     - `LocalTime`：用于表示“本地时间”，无“日期”。LocalTime不承载时区信息¹。
-     - `LocalDateTime`：用于表示“本地日期与时间”。LocalDateTime不承载时区信息¹。
-  2. **Zoned**：通过指定的时区处理日期时间³⁴。
-      - 这些类提供了丰富的方法来获取和操作日期和时间，例如获取年份、月份、日、小时、分钟和秒等¹。此外，它们还提供了用于解析和格式化日期时间字符串的方法¹。这个新的日期/时间API使用ISO-8601（基于公历）作为默认的日历系统¹。它提供了一系列的类，用于处理日期、时间、日期/时间、时区、时刻（instants）、过程（during）以及时钟（clock）³。例如，`LocalDate`、`LocalTime`和`LocalDateTime`这些类代表了观察者所在地的本地日期/时间²。我们主要在不需要明确指定时区的上下文中使用这些类². 此外，新的日期/时间API还提供了一系列的方法，用于格式化和解析日期和时间¹。新的API有以下的改进：
-        1. **线程安全**：新的日期时间API是线程安全的。不仅没有setter方法，而且任何对实例的变更都会返回一个新的实例，保证原来的实例不变¹。
-        2. **丰富的方法**：新的日期时间API提供了大量的方法，用于修改日期时间的各个部分，并返回一个新的实例¹。
-        3. **借鉴了第三方日期时间库joda的优点**¹。
-        4. **时区处理**：在时区方面，新的日期时间API引入了域 (domain) 这个概念¹
+- Java 8引入了一个全新的日期/时间API，位于java.time包下。这个API包含了一系列重要的类，用于处理日期和时间。以下是一些主要的类：
+  1. **Local**：简化了日期时间的处理，没有时区的问题。
+     - `LocalDate`：用于表示“本地日期”，无“时间”。LocalDate不承载时区信息。
+     - `LocalTime`：用于表示“本地时间”，无“日期”。LocalTime不承载时区信息。
+     - `LocalDateTime`：用于表示“本地日期与时间”。LocalDateTime不承载时区信息。
+  2. **Zoned**：通过指定的时区处理日期时间。
+      - 这些类提供了丰富的方法来获取和操作日期和时间，例如获取年份、月份、日、小时、分钟和秒等。此外，它们还提供了用于解析和格式化日期时间字符串的方法。这个新的日期/时间API使用ISO-8601（基于公历）作为默认的日历系统。它提供了一系列的类，用于处理日期、时间、日期/时间、时区、时刻（instants）、过程（during）以及时钟（clock）。例如，`LocalDate`、`LocalTime`和`LocalDateTime`这些类代表了观察者所在地的本地日期/时间。我们主要在不需要明确指定时区的上下文中使用这些类. 此外，新的日期/时间API还提供了一系列的方法，用于格式化和解析日期和时间。新的API有以下的改进：
+        1. **线程安全**：新的日期时间API是线程安全的。不仅没有setter方法，而且任何对实例的变更都会返回一个新的实例，保证原来的实例不变。
+        2. **丰富的方法**：新的日期时间API提供了大量的方法，用于修改日期时间的各个部分，并返回一个新的实例。
+        3. **借鉴了第三方日期时间库joda的优点**。
+        4. **时区处理**：在时区方面，新的日期时间API引入了域 (domain) 这个概念
 ##  Optional 类
-Java 8的Optional类是一个可以为null的容器对象¹。如果值存在，则`isPresent()`方法会返回true，调用`get()`方法会返回该对象¹。Optional是个容器：它可以保存类型T的值，或者仅仅保存null¹。Optional提供很多有用的方法，这样我们就不用显式进行空值检测¹。Optional类的引入很好的解决空指针异常¹。
-以下是一些主要的Optional类方法¹：
-- `empty()`：返回空的Optional实例¹。
-- `filter(Predicate<? super T> predicate)`：如果值存在，并且这个值匹配给定的predicate，返回一个Optional用以描述这个值，否则返回一个空的Optional¹。
-- `flatMap(Function<? super T,Optional<U>> mapper)`：如果值存在，返回基于Optional包含的映射方法的值，否则返回一个空的Optional¹。
-- `get()`：如果在这个Optional中包含这个值，返回值，否则抛出异常：NoSuchElementException¹.
-- `ifPresent(Consumer<? super T> consumer)`：如果值存在则使用该值调用consumer, 否则不做任何事情¹.
-- `isPresent()`：如果值存在则方法会返回true，否则返回 false¹.
--  `map(Function<? super T,? extends U> mapper)`：如果有值，则对其执行调用映射函数得到返回值。如果返回值不为null，则创建包含映射返回值的Optional作为map方法返回值，否则返回空Optional¹.
-- `of(T value)`：返回一个指定非null值的Optional¹.  
-- `ofNullable(T value)`：如果为非空，返回Optional描述的指定值，否则返回空的Optional¹.
-- `orElse(T other)`：如果存在该值，返回值，否则返回other¹.
-- `orElseGet(Supplier<? extends T> other)`：如果存在该值，返回值，否则触发other，并返回other调用的结果¹.
-- `orElseThrow(Supplier<? extends X> exceptionSupplier)`：如果存在该值，返回包含的值，否则抛出由Supplier继承的异常¹.
-这些方法使得Optional类在处理可能为null的对象时，能够提供一种更优雅，更安全的方式¹。这样，我们就可以避免在代码中显式进行空值检测，从而使代码更加清晰，可读¹。
+Java 8的Optional类是一个可以为null的容器对象。如果值存在，则`isPresent()`方法会返回true，调用`get()`方法会返回该对象。Optional是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。Optional类的引入很好的解决空指针异常。
+以下是一些主要的Optional类方法：
+- `empty()`：返回空的Optional实例。
+- `filter(Predicate<? super T> predicate)`：如果值存在，并且这个值匹配给定的predicate，返回一个Optional用以描述这个值，否则返回一个空的Optional。
+- `flatMap(Function<? super T,Optional<U>> mapper)`：如果值存在，返回基于Optional包含的映射方法的值，否则返回一个空的Optional。
+- `get()`：如果在这个Optional中包含这个值，返回值，否则抛出异常：NoSuchElementException.
+- `ifPresent(Consumer<? super T> consumer)`：如果值存在则使用该值调用consumer, 否则不做任何事情.
+- `isPresent()`：如果值存在则方法会返回true，否则返回 false.
+-  `map(Function<? super T,? extends U> mapper)`：如果有值，则对其执行调用映射函数得到返回值。如果返回值不为null，则创建包含映射返回值的Optional作为map方法返回值，否则返回空Optional.
+- `of(T value)`：返回一个指定非null值的Optional.  
+- `ofNullable(T value)`：如果为非空，返回Optional描述的指定值，否则返回空的Optional.
+- `orElse(T other)`：如果存在该值，返回值，否则返回other.
+- `orElseGet(Supplier<? extends T> other)`：如果存在该值，返回值，否则触发other，并返回other调用的结果.
+- `orElseThrow(Supplier<? extends X> exceptionSupplier)`：如果存在该值，返回包含的值，否则抛出由Supplier继承的异常.
+这些方法使得Optional类在处理可能为null的对象时，能够提供一种更优雅，更安全的方式。这样，我们就可以避免在代码中显式进行空值检测，从而使代码更加清晰，可读。
 ##  默认方法 
 默认方法就是接口可以有实现方法，而且不需要实现类去实现其方法。我们只需在方法名前面加个`default`关键字即可实现默认方法。例如：
 ```java
@@ -83,22 +83,22 @@ Java 8的Optional类是一个可以为null的容器对象¹。如果值存在，
 - Nashorn引擎的jjs：Nashorn是一个JavaScript引擎，它允许我们在JVM上执行JavaScript代码。从JDK 1.8开始，Nashorn取代Rhino成为Java的嵌入式JavaScript引擎。Nashorn完全支持ECMAScript 5.1规范以及一些扩展。它使用基于JSR 292的新语言特性，其中包含在JDK 7中引入的invokedynamic，将JavaScript编译成Java字节码。与先前的Rhino实现相比，这带来了2到10倍的性能提升。jjs是一个基于Nashorn引擎的命令行工具，它接受一些JavaScript源代码为参数，并执行这些源代码。
 - 类依赖分析器jdeps：jdeps是Java 8中引入的一个新的命令行工具，用于了解应用程序的静态依赖关系和库。jdeps命令显示Java类文件的包级或类级依赖关系。输入类可以是.class文件、目录、jar文件的路径名，或者可以是完全限定的类名称，以分析所有类文件。jdeps的参数选项决定了输出的内容。默认情况下，jdeps将依赖关系输出到系统输出（控制台）。
 
-# **Java 9**⁶：
+# **Java 9**：
 ##  平台级modularity（原名：Jigsaw） 模块化系统
-Jigsaw项目（后期更名为Modularity）是Java 9的一个重要特性，它引入了Java平台模块化系统（JPMS, Java Platform Module System）¹²³⁴。这个项目的工作量和难度大大超出了初始规划，其主体部分被分解成6个JDK Enhancement Proposals (JEP) ¹²³⁴。
+Jigsaw项目（后期更名为Modularity）是Java 9的一个重要特性，它引入了Java平台模块化系统（JPMS, Java Platform Module System）。这个项目的工作量和难度大大超出了初始规划，其主体部分被分解成6个JDK Enhancement Proposals (JEP) 。
 
-模块化系统的引入解决了Java在发展过程中遇到的一些问题，例如Java运行环境的膨胀和臃肿，代码库越来越大导致的管理问题，以及类库交叉依赖等问题¹²。模块化可以根据模块的需要加载程序运行需要的class，这样可以减少内存的开销¹²。此外，模块化使得代码组织上更安全，因为它可以指定哪些部分可以暴露，哪些部分隐藏¹²。
+模块化系统的引入解决了Java在发展过程中遇到的一些问题，例如Java运行环境的膨胀和臃肿，代码库越来越大导致的管理问题，以及类库交叉依赖等问题。模块化可以根据模块的需要加载程序运行需要的class，这样可以减少内存的开销。此外，模块化使得代码组织上更安全，因为它可以指定哪些部分可以暴露，哪些部分隐藏。
 
-总的来说，模块化系统的引入使得Java SE平台可以适应不同大小的计算设备，改进了其安全性，可维护性，并提高了性能¹²。这对于拥有大量镜像的容器应用场景或复杂依赖关系的大型应用等，都具有非常重要的意义¹²。
+总的来说，模块化系统的引入使得Java SE平台可以适应不同大小的计算设备，改进了其安全性，可维护性，并提高了性能。这对于拥有大量镜像的容器应用场景或复杂依赖关系的大型应用等，都具有非常重要的意义。
 ##  Java 的 REPL 工具： jShell 命令
 ##  多版本兼容 jar 包
 ##  语法改进：接口的私有方法
 ##  语法改进：UnderScore (下划线)使用的限制
 ##  底层结构：String 存储结构变更
-在Java 9中，String类的内部实现发生了变化¹²。在Java 8及之前的版本中，String类的内部实现是一个char数组¹²。然而，在Java 9中，这个实现改变为一个byte数组加上一个编码标记¹²。
-这个改变的原因是，我们知道Java中的char是16位UTF16编码的，但是在许多应用中，大部分的String对象只包含Latin-1字符，这些字符只需要一个字节的存储空间¹²。因此，在Java 8及之前的版本中，String对象的内部char数组的一半空间是被浪费的¹²。
-在Java 9中，如果一个String对象的所有字符都小于0xFF，那么每个char将对应一个byte¹²。如果存在一个char大于0xFF，那么byte数组的长度将会变为char数组长度的两倍，用两个字节来存放一个char¹²。
-这个改变使得在所有字符都小于0xFF的情况下，String对象可以节省一半的内存¹²。尽管所有的String方法都需要重新实现，但是对外的接口仍然保持一致¹²。
+在Java 9中，String类的内部实现发生了变化。在Java 8及之前的版本中，String类的内部实现是一个char数组。然而，在Java 9中，这个实现改变为一个byte数组加上一个编码标记。
+这个改变的原因是，我们知道Java中的char是16位UTF16编码的，但是在许多应用中，大部分的String对象只包含Latin-1字符，这些字符只需要一个字节的存储空间。因此，在Java 8及之前的版本中，String对象的内部char数组的一半空间是被浪费的。
+在Java 9中，如果一个String对象的所有字符都小于0xFF，那么每个char将对应一个byte。如果存在一个char大于0xFF，那么byte数组的长度将会变为char数组长度的两倍，用两个字节来存放一个char。
+这个改变使得在所有字符都小于0xFF的情况下，String对象可以节省一半的内存。尽管所有的String方法都需要重新实现，但是对外的接口仍然保持一致。
 
 > (1) JDK9的String类内部实现变更了！-CSDN博客. https://blog.csdn.net/keep12moving/article/details/100999667.
 >
@@ -109,11 +109,11 @@ Jigsaw项目（后期更名为Modularity）是Java 9的一个重要特性，它�
 > (4) 面试官：讲一下Java中String字符串的存储原理吧！ - 知乎专栏. https://zhuanlan.zhihu.com/p/159443898.
 ##  集合工厂方法：快速创建只读集合
 ##  增强的 Stream API
-Java 9对Stream API进行了一些增强，添加了一些新的方法，使得流处理更加方便¹²³⁴。以下是一些新增的方法：
-1. `takeWhile(Predicate<? super T> predicate)`：这个方法使用一个断言作为参数，返回给定Stream的子集直到断言语句第一次返回false。如果第一个值不满足断言条件，将返回一个空的Stream¹。
-2. `dropWhile(Predicate<? super T> predicate)`：这个方法和`takeWhile`作用相反，使用一个断言作为参数，直到断言语句第一次返回false才返回给定Stream的子集¹。
-3. `iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next)`：这个方法允许使用初始种子值创建顺序（可能是无限）流，并迭代应用指定的下一个方法。当指定的`hasNext`的predicate返回false时，迭代停止¹。
-4. `ofNullable(T t)`：这个方法可以预防NullPointerExceptions异常，可以通过检查流来避免null值。如果指定元素为非null，则获取一个元素并生成单个元素流，元素为null则返回一个空流¹。
+Java 9对Stream API进行了一些增强，添加了一些新的方法，使得流处理更加方便。以下是一些新增的方法：
+1. `takeWhile(Predicate<? super T> predicate)`：这个方法使用一个断言作为参数，返回给定Stream的子集直到断言语句第一次返回false。如果第一个值不满足断言条件，将返回一个空的Stream。
+2. `dropWhile(Predicate<? super T> predicate)`：这个方法和`takeWhile`作用相反，使用一个断言作为参数，直到断言语句第一次返回false才返回给定Stream的子集。
+3. `iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next)`：这个方法允许使用初始种子值创建顺序（可能是无限）流，并迭代应用指定的下一个方法。当指定的`hasNext`的predicate返回false时，迭代停止。
+4. `ofNullable(T t)`：这个方法可以预防NullPointerExceptions异常，可以通过检查流来避免null值。如果指定元素为非null，则获取一个元素并生成单个元素流，元素为null则返回一个空流。
 
 # **Java 10**：
 ##  局部变量的类型推断
@@ -122,7 +122,7 @@ Java 9对Stream API进行了一些增强，添加了一些新的方法，使得�
 ##  线程局部管控
 ##  基于Java的JIT 编译器（试验版本）
 
-# **Java 11**¹⁴：
+# **Java 11**：
 ##  String API 字符串绝对是 Java 中最常用的一个类了，String 类的方法使用率也都非常的高，在 Java 11 中又为 String 类带来了一系列的好用操作。 isBlank () 判空。
 ##  File API 读写文件变得更加方便。
 ##  JEP 321 - HTTP Client 在 Java 11 中 Http Client API 得到了标准化的支持。
@@ -139,20 +139,20 @@ HttpClient 的包名由 jdk.incubator.http 改为 java.net.http
 ## 引入ZGC；
 在Java 11 中作为实验功能首次出现，在JDK15开始可以正式投入使用
 
-ZGC（Z Garbage Collector）是一款性能优秀的垃圾收集器，它首次出现在JDK 11中，作为实验性的特性¹²。在JDK 15中，ZGC不再是实验功能，可以正式投入生产使用¹²。ZGC有以下几个重要特性¹²：
+ZGC（Z Garbage Collector）是一款性能优秀的垃圾收集器，它首次出现在JDK 11中，作为实验性的特性。在JDK 15中，ZGC不再是实验功能，可以正式投入生产使用。ZGC有以下几个重要特性：
 
-1. **暂停时间不会超过10ms**：在JDK 16发布后，GC暂停时间已经缩小到1ms以内，并且时间复杂度是O(1)，这也就是说GC停顿时间是一个固定值了，并不会受堆内存大小影响¹。
-2. **最大支持16TB的大堆，最小支持8MB的小堆**¹。
-3. **对应用程序吞吐量的影响小于15%**¹。
+1. **暂停时间不会超过10ms**：在JDK 16发布后，GC暂停时间已经缩小到1ms以内，并且时间复杂度是O(1)，这也就是说GC停顿时间是一个固定值了，并不会受堆内存大小影响。
+2. **最大支持16TB的大堆，最小支持8MB的小堆**。
+3. **对应用程序吞吐量的影响小于15%**。
 
-ZGC的工作原理包括以下几个关键技术¹²：
+ZGC的工作原理包括以下几个关键技术：
 
-- **内存多重映射**：ZGC为了更灵活高效地管理内存，使用了内存多重映射，把同一块物理内存映射为Marked0、Marked1和Remapped三个虚拟内存¹²。
-- **染色指针**：ZGC的一大创新是将GC信息保存在了染色指针上¹²。
-- **读屏障**：读屏障是JVM向应用代码插入一小段代码的技术，当应用线程从堆中读取对象引用时，就会执行这段代码¹²。
-- **并发处理算法**：ZGC的并发处理算法利用全局空间视图的切换和对象地址视图的切换，结合SATB算法实现了高效的并发¹²。
+- **内存多重映射**：ZGC为了更灵活高效地管理内存，使用了内存多重映射，把同一块物理内存映射为Marked0、Marked1和Remapped三个虚拟内存。
+- **染色指针**：ZGC的一大创新是将GC信息保存在了染色指针上。
+- **读屏障**：读屏障是JVM向应用代码插入一小段代码的技术，当应用线程从堆中读取对象引用时，就会执行这段代码。
+- **并发处理算法**：ZGC的并发处理算法利用全局空间视图的切换和对象地址视图的切换，结合SATB算法实现了高效的并发。
 
-以上就是ZGC的基本介绍，更详细的信息可以参考相关文档¹²。希望这些信息对你有所帮助！
+以上就是ZGC的基本介绍，更详细的信息可以参考相关文档。希望这些信息对你有所帮助！
 
 > (1) 12 张图带你彻底理解 ZGC - 知乎. https://zhuanlan.zhihu.com/p/473629704.
 > 
@@ -164,31 +164,31 @@ ZGC的工作原理包括以下几个关键技术¹²：
 > 
 > (5) Java 21 新特性：分代ZGC（Generational ZGC） | 程序猿DD. https://www.didispace.com/java-features/java21/jep439-generational-zgc.html.
 
-# **Java 12**¹⁶：
+# **Java 12**：
 ##  改进的switch表达式
 
-# **Java 13**¹⁸：
+# **Java 13**：
 ##  多行字符串字面量
 
-# **Java 14**¹⁹：
+# **Java 14**：
 ##  改进的switch表达式
 ##  instanceof支持 模式匹配 （语言特性）
 ##  record 特性，省去写get，equals（）等方法
 ##  NullPointerException（JVM特性）,精确到哪一行
 ##  加入了java打包工具jpackage的预览版
 
-# **Java 15**²²：
+# **Java 15**：
 ##  CharSequence 增加 isEmpty 默认方法CharSequence 新增了 isEmpty 方法，用于判定字符序列是否为空。
 
-# **Java 16**²³：
+# **Java 16**：
 ##  类型判断的模式匹配（Java 14 开始预览），以下示例在效果上类似于 Kotlin 的智能类型转换： if (obj instanceof String s) { System.out.println(s.length()); }
 ##  数据类（Java 14 开始预览）： record Point(int x, int y) { } Point p = new Point(3,4); System.out.println(p.x());
 
 # **Java 17** (17是当前最新的LTS版本)：
 ##  全新的 Java 长期支持版本提供数千个更新，进一步优化语言和平台，帮助开发人员提高工作效率
 ##  Oracle JDK 17 将为客户提供安全、性能和错误修复更新，至少到 2029 年 9 月
-## 标准化了HTTP Client API，该API在JDK 9中首次以孵化API的形式引入，并在JDK 10中进行了更新¹。
-  HTTP Client API示例¹：
+## 标准化了HTTP Client API，该API在JDK 9中首次以孵化API的形式引入，并在JDK 10中进行了更新。
+  HTTP Client API示例：
 ```java
 HttpClient client = HttpClient.newHttpClient();
 HttpRequest request = HttpRequest.newBuilder()
@@ -198,17 +198,17 @@ client.sendAsync(request, BodyHandlers.ofString())
       .thenApply(HttpResponse::body)
       .thenAccept(System.out::println);
 ```
-# **Java 18**⁵⁶⁷：
-## 引入了向量API，预览了用于switch表达式的模式匹配，采用了UTF##8作为默认字符集，包含了一个简单的web服务器等⁷。
-向量API示例⁵：
+# **Java 18**：
+## 引入了向量API，预览了用于switch表达式的模式匹配，采用了UTF##8作为默认字符集，包含了一个简单的web服务器等。
+向量API示例：
 ```java
 var a = IntVector.fromArray(SPECIES_128, arrayA, 0);
 var b = IntVector.fromArray(SPECIES_128, arrayB, 0);
 var c = a.mul(b).add(a).intoArray(result, 0);
 ```
-# **Java 19**⁹[^10^]¹¹：
+# **Java 19**[^10^]：
 ## 从OpenJDK项目Amber中引入了语言改进（记录模式和用于Switch的模式匹配）；
-模式匹配示例⁹：
+模式匹配示例：
 ```java
 Object obj = "Hello, World!";
 if (obj instanceof String s) {
@@ -218,15 +218,15 @@ if (obj instanceof String s) {
 ## 从OpenJDK项目Panama中引入了库增强功能，以便与非Java代码进行互操作（Foreign Function and Memory API）并利用向量指令（Vector API）；
 ## 预览了Project Loom的首个版本（Virtual Threads和Structured Concurrency），这将大大减少编写和维护高吞吐量并发应用程序所需的工作量[^10^]。
 
-# **Java 20**¹³¹⁴¹⁵：
-## 引入了虚拟线程，一种代际Z垃圾收集器，以及一种关键的封装机制API¹⁵。
-虚拟线程示例¹³：
+# **Java 20**：
+## 引入了虚拟线程，一种代际Z垃圾收集器，以及一种关键的封装机制API。
+虚拟线程示例：
 ```java
 Thread.startVirtualThread(() ##> System.out.println("Hello, World!"));
 ```
-# **Java 21**¹⁶¹⁷¹⁸¹⁹：
-## 引入了记录模式，以解构记录值¹⁶；
-  记录模式示例¹⁶：
+# **Java 21**：
+## 引入了记录模式，以解构记录值；
+  记录模式示例：
 ```java
 record Point(int x, int y) { }
 var p = new Point(3, 4);
@@ -236,7 +236,7 @@ if (p instanceof Point(int x, int y)) {
 ```
 ## 优化了虚拟线程；
 ## 引入了代际ZGC (*分代* 的ZGC)；
-## 准备禁止动态加载代理¹⁶。
+## 准备禁止动态加载代理。
 
 > (1) Java 8 新特性 | 菜鸟教程. https://bing.com/search?q=Java+8+%e4%b8%bb%e8%a6%81%e6%9b%b4%e6%96%b0%e5%86%85%e5%ae%b9.
 >
